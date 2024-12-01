@@ -15,7 +15,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-customNavyBlue">
       {" "}
       {/* Ensure the page takes the full height */}
       {/* Centering the content and adding equal space on both sides */}
