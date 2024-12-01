@@ -1,10 +1,11 @@
 import NavBar from "./Components/NavBar";
-
+import Card from "./Components/Card";
+import ProductList from "./Components/ProductList";
 function App() {
   return (
     <div>
-      <h1>hello world</h1>
       <NavBar />
+      <ProductList />
     </div>
   );
 }
