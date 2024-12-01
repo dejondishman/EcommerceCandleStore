@@ -4,7 +4,7 @@ import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 
 const Navbar = ({ cartItems }) => {
   return (
-    <nav className="bg-blue-500 p-4">
+    <nav className="bg-blue-500 p-4 m-4">
       <div className="flex justify-between items-center">
         {/* Logo */}
         <div className="text-white font-bold text-xl">

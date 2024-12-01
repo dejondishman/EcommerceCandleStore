@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card";
 
-export default function ProductList({addToCart}) {
+export default function ProductList({ addToCart }) {
   const products = [
     {
       id: 1,
@@ -76,7 +76,7 @@ export default function ProductList({addToCart}) {
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-8">
       {products.map((product) => (
         <Card
           key={product.id}
