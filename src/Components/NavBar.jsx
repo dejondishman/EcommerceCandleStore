@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Assuming you use React Router for navigation
+import { ShoppingCartIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 const Navbar = () => {
   return (
-    <nav className="bg-blue-500 p-4 flex ">
+    <nav className="bg-blue-500 p-4">
       <div className="flex justify-between items-center">
         {/* Logo */}
         <div className="text-white font-bold text-xl">
-          <Link className="bg-slate-500" to="/">CandleStore</Link>
+          <Link to="/">Distric Candles Store</Link>
         </div>
 
         {/* Navbar Links */}
-        <div className="space-x-4 ">
+        <div className="flex flex-grow justify-center space-x-4">
           <Link
             to="/home"
             className="text-white hover:text-gray-300 transition duration-200"
@@ -38,11 +39,10 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Cart Icon (optional) */}
-        <div className="text-white">
-          <Link to="/cart">
-            <i className="fas fa-shopping-cart"></i> Cart
-          </Link>
+        {/* Cart and Search Icons */}
+        <div className="flex ml-auto space-x-4 text-white">
+          <ShoppingCartIcon className="h-6 w-6 text-gray-700" />
+          <MagnifyingGlassIcon className="h-6 w-6 text-gray-700" />
         </div>
       </div>
     </nav>
