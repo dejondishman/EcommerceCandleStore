@@ -1,14 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Assuming you use React Router for navigation
-import { ShoppingCartIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { Link } from "react-router-dom"; // To handle navigation
+import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 
-const Navbar = () => {
+const Navbar = ({ cartItems }) => {
   return (
     <nav className="bg-blue-500 p-4">
       <div className="flex justify-between items-center">
         {/* Logo */}
         <div className="text-white font-bold text-xl">
-          <Link to="/">Distric Candles Store</Link>
+          <Link to="/home">Distric Candles Store</Link>
         </div>
 
         {/* Navbar Links */}
@@ -39,11 +39,17 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Cart and Search Icons */}
-        <div className="flex ml-auto space-x-4 text-white">
-          <ShoppingCartIcon className="h-6 w-6 text-gray-700" />
-          <MagnifyingGlassIcon className="h-6 w-6 text-gray-700" />
-        </div>
+        {/* Cart Icon */}
+        <Link to="/cart">
+          <div className="relative">
+            <ShoppingCartIcon className="h-6 w-6 text-gray-700" />
+            {cartItems.length > 0 && (
+              <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs px-1">
+                {cartItems.length}
+              </span>
+            )}
+          </div>
+        </Link>
       </div>
     </nav>
   );
