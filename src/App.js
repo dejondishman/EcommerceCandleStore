@@ -18,10 +18,10 @@ function App() {
     <div className="min-h-screen bg-customNavyBlue">
       {" "}
       {/* Ensure the page takes the full height */}
-      {/* Centering the content and adding equal space on both sides */}
+      {/* Navbar should span the full width */}
+      <Navbar cartItems={cartItems} />
+      {/* Main content constrained to a centered container */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 max-w-screen-lg">
-        {/* Pass the cartItems to Navbar to show cart count */}
-        <Navbar cartItems={cartItems} />
         <Routes>
           {/* When user navigates to /cart, display the CartPage */}
           <Route path="/cart" element={<CartPage cartItems={cartItems} />} />

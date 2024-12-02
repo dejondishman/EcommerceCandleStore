@@ -86,15 +86,18 @@ export default function ProductList({ addToCart }) {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-8">
-      {products.map((product) => (
-        <Card
-          image={product.image}
-          key={product.id}
-          product={product}
-          addToCart={addToCart} // Pass the addToCart function to Card
-        />
-      ))}
+    <div className="container mx-auto p-6">
+      {/* Grid container */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {products.map((product) => (
+          <Card
+            image={product.image}
+            key={product.id}
+            product={product}
+            addToCart={addToCart}
+          />
+        ))}
+      </div>
     </div>
   );
 }

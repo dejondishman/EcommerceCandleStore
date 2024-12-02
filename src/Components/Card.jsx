@@ -1,33 +1,43 @@
-import React from "react";
+import Button from '@mui/material/Button';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Card = ({ product, addToCart }) => {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      {/* Adjust image styling for a consistent aspect ratio */}
-      <div className="relative w-full h-48"> {/* Set fixed height */}
-        <img 
-          src={product.image} 
-          alt={product.title} 
-          className="absolute top-0 left-0 w-full h-full object-cover rounded-lg" 
+    <div className="w-full bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 flex flex-col">
+      {/* Image Section */}
+      <div className="relative w-full h-64">
+        <img
+          src={product.image}
+          alt={product.title}
+          className="absolute top-0 left-0 w-full h-full object-cover rounded-t-lg"
         />
       </div>
-      
-      <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{product.title}</h2>
-      <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{product.price}</p>
-      <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{product.description}</p>
-      
-      <button onClick={() => addToCart(product)} type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-<svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-<path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
-</svg>
-Buy now
-</button>
+
+      {/* Content Section */}
+      <div className="flex flex-col flex-grow p-6">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+          {product.title}
+        </h2>
+        <p className="text-lg font-semibold text-gray-700 dark:text-gray-400 mb-3">
+          {product.price}
+        </p>
+        <p className="text-base text-gray-700 dark:text-gray-400 mb-5 flex-grow">
+          {product.description}
+        </p>
+        
+        <Button
+          onClick={() => addToCart(product)}
+          variant="contained"
+          color="primary"
+          endIcon={<ShoppingCartIcon />}
+          fullWidth
+        >
+          Buy Now
+        </Button>
+        
+      </div> 
     </div>
   );
 };
 
 export default Card;
-
-
-
-
