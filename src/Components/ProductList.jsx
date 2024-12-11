@@ -2,18 +2,23 @@ import React from "react";
 
 const ProductList = ({ products, addToCart }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
       {products.map((product) => (
-        <div key={product.id} className="border p-4 rounded-lg flex flex-col h-full">
-          <img
-            src={product.image}
-            alt={product.title}
-            className="w-full h-48 object-cover rounded-md"
-          />
+        <div
+          key={product.id}
+          className="border p-4 rounded-lg flex flex-col"
+        >
+          <div className="relative w-full h-48">
+            <img
+              src={product.image}
+              alt={product.title}
+              className="w-full h-full object-cover rounded-md"
+            />
+          </div>
           <h2 className="text-lg text-white font-bold">{product.title}</h2>
           <p className="text-white">{product.scent}</p>
           <p className="text-white">{product.description}</p>
-          <p className=" text-white font-semibold">{product.price}</p>
+          <p className="text-white font-semibold">${product.price}</p>
           <div className="mt-auto">
             <button
               onClick={() => addToCart(product)}

@@ -1,20 +1,50 @@
 import React from "react";
 
 const CartPage = ({ cartItems }) => {
+  // Calculate the subtotal
+  const subtotal = cartItems.reduce((total, item) => {
+    return total + parseFloat(item.price); // Make sure price is a number
+  }, 0);
+
+  const numOfItems = cartItems.length;
+
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold">Your Cart</h1>
+      <div className="text-center">
+        <h1 className="text-2xl font-bold text-slate-50">Shopping Cart</h1>
+        <div className="m-1">
+          {/* Display subtotal */}
+          <h2 className="text-lg text-slate-50 mt-4">Subtotal: ${subtotal.toFixed(2)}</h2>
+        </div>
+
+        <div className="m-1">
+          <button className="bg-cyan-100 rounded-md p-1">
+            Proceed to Checkout ({numOfItems})
+          </button>
+        </div>
+      </div>
+
       {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p >Your cart is empty.</p>
       ) : (
         <ul>
           {cartItems.map((item, index) => (
-            <li key={index} className="mb-4">
-              <div className="flex justify-between">
-                <span>{item.title}</span>
-                <span>{item.price}</span>
+            <li key={index} className="border p-4 rounded-lg flex flex-col">
+              <div className=" bg-cyan-100 text-black flex justify-between items-start">
+                <div className="flex flex-col items-start">
+                  {/* Title on top */}
+                  <span className="font-bold">{item.title}</span>
+                  {/* Image directly under the title */}
+                  <img src={item.image} alt={item.title} className="w-20 h-20 object-cover mt-2" />
+                </div>
+
+                {/* Text on the right */}
+                <div className="flex flex-col items-end ml-4">
+                  <p>{item.description}</p>
+                  <p className="text-red-700">Limited Time Deal</p>
+                  <span>{item.price}</span>
+                </div>
               </div>
-              <p>{item.description}</p>
             </li>
           ))}
         </ul>

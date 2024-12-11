@@ -1,74 +1,60 @@
+/* we want to a filter for price if a candle is 
+over $15 we want to show candles over 15 
+if a candle is under 15 we want to show candles under 15
+
+- also we want a filter for titles, if a title of a candle is selected we want 
+price, description and scent to be displayed 
+*/
 import { useState } from "react";
 
-function Filter({ products }) {
+export default  function Filter({products}){
+  // when dropdwon filters is clicked and value is changed we want to update ui with info from value 
   const [selectedPriceRange, setSelectedPriceRange] = useState("All");
-  const [selectedTitle, setSelectedTitle] = useState("All");
-//const [selectedReviews, setSelectedReviews] = useState("All")
+  const [selectedTitle, setSelectedTitle] =  useState("All");
 
-  // Filter the products based on selected filters
-  const filteredProducts = products.filter((product) => {
-    // Price filter
-    if (selectedPriceRange !== "All") {
-      const price = parseFloat(product.price.replace("$", ""));
-      if (selectedPriceRange === "Under 15" && price >= 15) return false;
-      if (selectedPriceRange === "Above 15" && price <= 15) return false;
-    }
+  if(selectedPriceRange !== "All" && selectedPriceRange >= 15){
+    return false 
+  };
+  if(selectedPriceRange !== "All" && selectedPriceRange <= 15){
+    return false 
+  }
 
-    // Title filter
-    if (selectedTitle !== "All" && product.title !== selectedTitle) {
-      return false;
-    }
-
-    // If all conditions pass, include the product
-    return true;
-  });
-
-  return (
+  return(
     <div>
-      {/* Dropdown for price range */}
-      <div>
-            <select
-                value={selectedPriceRange}
-                onChange={(e) => setSelectedPriceRange(e.target.value)}
-                className="border-radius "
-            
-            >
-                <option value="All">All</option>
-                <option value="Under 15">Under $15</option>
-                <option value="Above 15">Above $15</option>
-            </select>
+       <aside className="w-1/3 bg-black text-white p-4 h-full">
+        {/* Price Filter Dropdown */}
+        <label htmlFor="Price">Filter by Price:</label>
+        <select
+          name="Price"
+          id="Price"
+          className="text-black"
+          value={selectedPriceRange}
+          onChange={(e) => setSelectedPriceRange(e.target.value)}
+        >
+          <option value="All">All</option>
+          <option value="Under 15">Under $15</option>
+          <option value="Over 15">Over $15</option>
+        </select>
 
-            {/* Dropdown for title */}
-            <select
-                value={selectedTitle}
-                onChange={(e) => setSelectedTitle(e.target.value)}
-            >
-                <option value="All">All Titles</option>
-                {products.map((product) => (
-                <option key={product.id} value={product.title}>
-                    {product.title}
-                </option>
-                ))}
-            </select>
-      </div>
-      
-
-      {/* Render filtered products */}
-      <div>
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <div key={product.id}>
-              <h2 className="text-white font-bold">{product.title}</h2>
-              <p className="text-white">{product.price}</p>
-              <p className="text-white">{product.scent}</p>
-            </div>
-          ))
-        ) : (
-          <p>No products match your filter criteria.</p>
-        )}
-      </div>
+        {/* Title Filter Dropdown */}
+        <label htmlFor="Title" className="mt-4">Filter by Title:</label>
+        <select
+          name="Title"
+          id="Title"
+          className="text-black"
+          value={selectedTitle}
+          onChange={(e) => setSelectedTitle(e.target.value)}
+        >
+          <option value="All">All</option>
+          {products.map((product) => (
+            <option key={product.title} value={product.title}>
+              {product.title}
+            </option>
+          ))}
+        </select>
+      </aside>
+        
     </div>
-  );
+  )
 }
 
-export default Filter;
