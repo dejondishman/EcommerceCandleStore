@@ -15,7 +15,7 @@ function App() {
       price: "15",
       description:
         "Wrap yourself in the luxurious embrace of Midnight Velvet, where sensual amber meets the mysterious allure of smoky oud, softened by creamy vanilla.",
-      image: "/assets/candle1.jpg",
+      image: "/assets/candle7.jpg",
     },
     {
       title: "Ocean Mist & Driftwood",
@@ -133,7 +133,11 @@ function App() {
             <Route
               path="/home"
               element={
-                <ProductList products={products} addToCart={addToCart} />
+                <ProductList
+                  products={products}
+                  addToCart={addToCart}
+                  className="max-h-180"
+                />
               }
             />
           </Routes>

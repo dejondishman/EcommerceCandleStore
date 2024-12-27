@@ -25,12 +25,15 @@ const CartPage = ({ cartItems }) => {
       </div>
 
       {cartItems.length === 0 ? (
-        <p >Your cart is empty.</p>
+        <p>Your cart is empty.</p>
       ) : (
         <ul>
           {cartItems.map((item, index) => (
-            <li key={index} className="border p-4 rounded-lg flex flex-col">
-              <div className=" bg-cyan-100 text-black flex justify-between items-start">
+            <li
+              key={index}
+              className="p-4 rounded-lg flex flex-col border-b border-black"
+            >
+              <div className="text-white flex justify-between items-start">
                 <div className="flex flex-col items-start">
                   {/* Title on top */}
                   <span className="font-bold">{item.title}</span>
@@ -40,9 +43,9 @@ const CartPage = ({ cartItems }) => {
 
                 {/* Text on the right */}
                 <div className="flex flex-col items-end ml-4">
-                  <p>{item.description}</p>
                   <p className="text-red-700">Limited Time Deal</p>
-                  <span>{item.price}</span>
+                  <span>${item.price}</span>
+                  <p className="m-1 items-start">{item.description}</p>
                 </div>
               </div>
             </li>
